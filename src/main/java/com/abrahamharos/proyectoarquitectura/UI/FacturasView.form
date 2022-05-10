@@ -81,9 +81,9 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton1" min="-2" pref="97" max="-2" attributes="0"/>
+                                      <Component id="atrasBtn" min="-2" pref="97" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton2" min="-2" pref="97" max="-2" attributes="0"/>
+                                      <Component id="siguienteBtn" min="-2" pref="97" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane1" min="-2" pref="1208" max="-2" attributes="0"/>
                               </Group>
@@ -110,8 +110,8 @@
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="atrasBtn" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="siguienteBtn" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="resumenLabel" min="-2" max="-2" attributes="0"/>
@@ -292,7 +292,7 @@
             <Property name="text" type="java.lang.String" value="$0.00"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="atrasBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cd" id="Text Highlight" palette="2" red="a5" type="palette"/>
@@ -300,10 +300,10 @@
             <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atrasBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="siguienteBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cd" id="Text Highlight" palette="2" red="a5" type="palette"/>
@@ -311,7 +311,7 @@
             <Property name="text" type="java.lang.String" value="Siguiente"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="siguienteBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

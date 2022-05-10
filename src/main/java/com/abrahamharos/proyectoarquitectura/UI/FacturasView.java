@@ -26,27 +26,184 @@ public class FacturasView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        windowTitle = new javax.swing.JLabel();
+        selectFilesBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaFacturas = new javax.swing.JTable();
+        nextBtn = new javax.swing.JButton();
+        resumenLabel = new javax.swing.JLabel();
+        subtotalLabel = new javax.swing.JLabel();
+        ivaLabel = new javax.swing.JLabel();
+        iepsLabel = new javax.swing.JLabel();
+        totalLabel = new javax.swing.JLabel();
+        subtotal = new javax.swing.JLabel();
+        iva = new javax.swing.JLabel();
+        ieps = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("RIF Calculator");
+        setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setText("FactuasView");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setSize(new java.awt.Dimension(1280, 720));
+
+        windowTitle.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        windowTitle.setText("Facturas Recibidas");
+
+        selectFilesBtn.setBackground(java.awt.SystemColor.textHighlight);
+        selectFilesBtn.setText("Seleccionar Archivos");
+
+        tablaFacturas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "#", "¿Incluir?", "Fecha", "Nombre Emisor", "Uso CFDI", "Método de pago", "Subtotal", "IVA", "IEPS", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tablaFacturas);
+        if (tablaFacturas.getColumnModel().getColumnCount() > 0) {
+            tablaFacturas.getColumnModel().getColumn(0).setMaxWidth(40);
+            tablaFacturas.getColumnModel().getColumn(1).setMaxWidth(60);
+            tablaFacturas.getColumnModel().getColumn(2).setMinWidth(120);
+            tablaFacturas.getColumnModel().getColumn(2).setMaxWidth(120);
+            tablaFacturas.getColumnModel().getColumn(3).setMinWidth(250);
+            tablaFacturas.getColumnModel().getColumn(3).setPreferredWidth(10);
+            tablaFacturas.getColumnModel().getColumn(3).setMaxWidth(250);
+            tablaFacturas.getColumnModel().getColumn(4).setMinWidth(150);
+            tablaFacturas.getColumnModel().getColumn(4).setPreferredWidth(75);
+            tablaFacturas.getColumnModel().getColumn(4).setMaxWidth(150);
+            tablaFacturas.getColumnModel().getColumn(5).setMinWidth(150);
+            tablaFacturas.getColumnModel().getColumn(5).setPreferredWidth(10);
+            tablaFacturas.getColumnModel().getColumn(5).setMaxWidth(150);
+            tablaFacturas.getColumnModel().getColumn(6).setMinWidth(90);
+            tablaFacturas.getColumnModel().getColumn(6).setPreferredWidth(10);
+            tablaFacturas.getColumnModel().getColumn(6).setMaxWidth(90);
+            tablaFacturas.getColumnModel().getColumn(7).setResizable(false);
+            tablaFacturas.getColumnModel().getColumn(8).setResizable(false);
+            tablaFacturas.getColumnModel().getColumn(9).setResizable(false);
+        }
+
+        nextBtn.setBackground(java.awt.SystemColor.textHighlight);
+        nextBtn.setText("Siguiente");
+
+        resumenLabel.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        resumenLabel.setText("Resumen");
+
+        subtotalLabel.setText("Subtotal:");
+
+        ivaLabel.setText("I.V.A. :");
+
+        iepsLabel.setText("I.E.P.S. :");
+
+        totalLabel.setText("Total:");
+
+        subtotal.setText("$0.00");
+
+        iva.setText("$0.00");
+
+        ieps.setText("$0.00");
+
+        total.setText("$0.00:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selectFilesBtn)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(resumenLabel)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(totalLabel)
+                                                .addComponent(iepsLabel)
+                                                .addComponent(ivaLabel)
+                                                .addComponent(subtotalLabel))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(total)
+                                                .addComponent(ieps)
+                                                .addComponent(iva)
+                                                .addComponent(subtotal))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nextBtn))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(557, 557, 557)
+                        .addComponent(windowTitle)))
+                .addGap(0, 36, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(windowTitle)
+                .addGap(18, 18, 18)
+                .addComponent(selectFilesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(resumenLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(subtotalLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ivaLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(iepsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(totalLabel))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(subtotal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(iva)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ieps)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(total)))))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(317, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1)
-                .addContainerGap(243, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -88,6 +245,20 @@ public class FacturasView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel ieps;
+    private javax.swing.JLabel iepsLabel;
+    private javax.swing.JLabel iva;
+    private javax.swing.JLabel ivaLabel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton nextBtn;
+    private javax.swing.JLabel resumenLabel;
+    private javax.swing.JButton selectFilesBtn;
+    private javax.swing.JLabel subtotal;
+    private javax.swing.JLabel subtotalLabel;
+    private javax.swing.JTable tablaFacturas;
+    private javax.swing.JLabel total;
+    private javax.swing.JLabel totalLabel;
+    private javax.swing.JLabel windowTitle;
     // End of variables declaration//GEN-END:variables
 }

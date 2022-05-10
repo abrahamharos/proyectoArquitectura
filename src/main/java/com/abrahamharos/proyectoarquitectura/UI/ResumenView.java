@@ -28,10 +28,10 @@ public class ResumenView extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         windowTitle = new javax.swing.JLabel();
-        siguienteBtn = new javax.swing.JButton();
+        excelBtn = new javax.swing.JButton();
         atrasBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaResumen = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,11 +41,11 @@ public class ResumenView extends javax.swing.JFrame {
         windowTitle.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         windowTitle.setText("Resumen global");
 
-        siguienteBtn.setBackground(new java.awt.Color(165, 198, 106));
-        siguienteBtn.setText("Exportar a Excel");
-        siguienteBtn.addActionListener(new java.awt.event.ActionListener() {
+        excelBtn.setBackground(new java.awt.Color(165, 198, 106));
+        excelBtn.setText("Exportar a Excel");
+        excelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                siguienteBtnActionPerformed(evt);
+                excelBtnActionPerformed(evt);
             }
         });
 
@@ -57,7 +57,7 @@ public class ResumenView extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaResumen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -76,7 +76,7 @@ public class ResumenView extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaResumen);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,7 +92,7 @@ public class ResumenView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(atrasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(siguienteBtn))
+                        .addComponent(excelBtn))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -106,7 +106,7 @@ public class ResumenView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(atrasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(siguienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(excelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15))
         );
 
@@ -124,9 +124,9 @@ public class ResumenView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void siguienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteBtnActionPerformed
+    private void excelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excelBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_siguienteBtnActionPerformed
+    }//GEN-LAST:event_excelBtnActionPerformed
 
     private void atrasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBtnActionPerformed
         // TODO add your handling code here:
@@ -169,10 +169,10 @@ public class ResumenView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasBtn;
+    private javax.swing.JButton excelBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton siguienteBtn;
+    private javax.swing.JTable tablaResumen;
     private javax.swing.JLabel windowTitle;
     // End of variables declaration//GEN-END:variables
 }

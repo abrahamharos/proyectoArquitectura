@@ -31,7 +31,6 @@ public class FacturasView extends javax.swing.JFrame {
         selectFilesBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaFacturas = new javax.swing.JTable();
-        nextBtn = new javax.swing.JButton();
         resumenLabel = new javax.swing.JLabel();
         subtotalLabel = new javax.swing.JLabel();
         ivaLabel = new javax.swing.JLabel();
@@ -41,6 +40,8 @@ public class FacturasView extends javax.swing.JFrame {
         iva = new javax.swing.JLabel();
         ieps = new javax.swing.JLabel();
         total = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RIF Calculator");
@@ -104,9 +105,6 @@ public class FacturasView extends javax.swing.JFrame {
             tablaFacturas.getColumnModel().getColumn(9).setResizable(false);
         }
 
-        nextBtn.setBackground(java.awt.SystemColor.textHighlight);
-        nextBtn.setText("Siguiente");
-
         resumenLabel.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         resumenLabel.setText("Resumen");
 
@@ -124,7 +122,23 @@ public class FacturasView extends javax.swing.JFrame {
 
         ieps.setText("$0.00");
 
-        total.setText("$0.00:");
+        total.setText("$0.00");
+
+        jButton1.setBackground(java.awt.SystemColor.textHighlight);
+        jButton1.setText("Atrás");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(java.awt.SystemColor.textHighlight);
+        jButton2.setText("Siguiente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -153,7 +167,9 @@ public class FacturasView extends javax.swing.JFrame {
                                                 .addComponent(iva)
                                                 .addComponent(subtotal))))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nextBtn))
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1208, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(557, 557, 557)
@@ -171,7 +187,9 @@ public class FacturasView extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(resumenLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -208,6 +226,14 @@ public class FacturasView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,9 +275,10 @@ public class FacturasView extends javax.swing.JFrame {
     private javax.swing.JLabel iepsLabel;
     private javax.swing.JLabel iva;
     private javax.swing.JLabel ivaLabel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton nextBtn;
     private javax.swing.JLabel resumenLabel;
     private javax.swing.JButton selectFilesBtn;
     private javax.swing.JLabel subtotal;

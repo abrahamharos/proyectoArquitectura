@@ -4,6 +4,14 @@
  */
 package com.abrahamharos.proyectoarquitectura.UI;
 
+import java.awt.Component;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author abrahamharos
@@ -57,6 +65,11 @@ public class FacturasView extends javax.swing.JFrame {
 
         selectFilesBtn.setBackground(java.awt.SystemColor.textHighlight);
         selectFilesBtn.setText("Seleccionar Archivos");
+        selectFilesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectFilesBtnActionPerformed(evt);
+            }
+        });
 
         tablaFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -234,6 +247,23 @@ public class FacturasView extends javax.swing.JFrame {
     private void siguienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_siguienteBtnActionPerformed
+
+    private void selectFilesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFilesBtnActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setMultiSelectionEnabled(true);
+        chooser.showOpenDialog(null);
+        File[] files = chooser.getSelectedFiles();
+        for (File file : files) {
+            if (file.canRead() && file.isFile()) {
+                try {
+                    String contents = Files.readString(file.toPath());
+                    System.out.println(contents);
+                } catch (IOException ex) {
+                    Logger.getLogger(FacturasView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_selectFilesBtnActionPerformed
 
     /**
      * @param args the command line arguments

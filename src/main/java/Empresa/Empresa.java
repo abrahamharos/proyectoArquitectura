@@ -18,4 +18,28 @@ public abstract class Empresa {
         this.nombre = nombre;
         this.regimenFiscal = regimenFiscal;
     }
+
+    public String getRFC() {
+        return RFC;
+    }
+
+    public void setRFC(String RFC) {
+        this.RFC = RFC;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getRegimenFiscal() {
+        return regimenFiscal;
+    }
+
+    public void setRegimenFiscal(String regimenFiscal) {
+        this.regimenFiscal = regimenFiscal;
+    }
 }

@@ -24,5 +24,12 @@ public class Receptor extends Empresa {
                 "\nRegimenFiscal: " + this.regimenFiscal + 
                 "\nusoCFDI: " + this.usoCFDI;
     }
-    
+
+    public String getUsoCFDI() {
+        return usoCFDI;
+    }
+
+    public void setUsoCFDI(String usoCFDI) {
+        this.usoCFDI = usoCFDI;
+    }
 }

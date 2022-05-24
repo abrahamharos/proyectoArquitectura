@@ -6,6 +6,7 @@ package Client;
 
 import Empresa.*;
 import ImpuestoTrasladado.*;
+import Concepto.*;
 
 /**
  *
@@ -42,6 +43,20 @@ public class Main {
         System.out.println(IEPS.toString());
         System.out.println();
         /* CREANDO IMPUESTO TRASLADADO: IVA Y EPS */
+        
+        /* CREANDO CONCEPTO INVIDUAL */
+        CreadorConceptoIndividual creadorConceptoIndividual = new CreadorConceptoIndividual();
+        Concepto conceptoIndividual = creadorConceptoIndividual.crearConcepto(1, 1, 1);
+        
+        System.out.println(conceptoIndividual.toString());
+        System.out.println();
+        /* CREANDO CONCEPTO INVIDUAL */
+        
+        Conceptos conceptos = new Conceptos();
+        conceptos.addConcepto(conceptoIndividual);
+        System.out.println(conceptos.toString());
+        System.out.println();
+        
         
         System.out.println("Main finished");
     }

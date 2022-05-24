@@ -29,4 +29,36 @@ public abstract class ImpuestoTrasladado {
                 "\nTasaOCuota: " + this.tasaOCuota +
                 "\nImporte: " + this.importe;
     }
+
+    public float getBase() {
+        return base;
+    }
+
+    public void setBase(float base) {
+        this.base = base;
+    }
+
+    public String getTipoFactor() {
+        return tipoFactor;
+    }
+
+    public void setTipoFactor(String tipoFactor) {
+        this.tipoFactor = tipoFactor;
+    }
+
+    public float getTasaOCuota() {
+        return tasaOCuota;
+    }
+
+    public void setTasaOCuota(float tasaOCuota) {
+        this.tasaOCuota = tasaOCuota;
+    }
+
+    public float getImporte() {
+        return importe;
+    }
+
+    public void setImporte(float importe) {
+        this.importe = importe;
+    }
 }

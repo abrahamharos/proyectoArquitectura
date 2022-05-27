@@ -27,21 +27,21 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> facturasTest = new ArrayList<String>();
-        File folder = new File("/Users/abrahamharos/Documents/proyectoArquitectura/testFacturas/Emitidas/");
-        File[] listOfFiles = folder.listFiles();
+//        ArrayList<String> facturasTest = new ArrayList<String>();
+//        File folder = new File("/Users/abrahamharos/Documents/proyectoArquitectura/testFacturas/Emitidas/");
+//        File[] listOfFiles = folder.listFiles();
+//
+//        for (int i = 0; i < listOfFiles.length; i++) {
+//          if (listOfFiles[i].isFile()) {
+//            facturasTest.add("/Users/abrahamharos/Documents/proyectoArquitectura/testFacturas/Emitidas/" + listOfFiles[i].getName());
+//          }
+//        }
+//       
+//        ArrayList<Comprobante> comprobantesResult = new ArrayList<Comprobante>();
+//        
+//        ComprobanteParser comprobanteParser = new ComprobanteParser();
+//        comprobanteParser.parseComprobante(facturasTest);
 
-        for (int i = 0; i < listOfFiles.length; i++) {
-          if (listOfFiles[i].isFile()) {
-            facturasTest.add("/Users/abrahamharos/Documents/proyectoArquitectura/testFacturas/Emitidas/" + listOfFiles[i].getName());
-          }
-        }
-       
-        ArrayList<Comprobante> comprobantesResult = new ArrayList<Comprobante>();
-        
-        ComprobanteParser comprobanteParser = new ComprobanteParser();
-        comprobanteParser.parseComprobante(facturasTest);
-        
         
         System.out.println("Main finished");
     }

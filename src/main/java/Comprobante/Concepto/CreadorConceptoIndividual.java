@@ -2,15 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ImpuestoTrasladado;
+package Comprobante.Concepto;
 
 /**
  *
  * @author abrahamharos
  */
-public class IVA extends ImpuestoTrasladado {
-    
-    public IVA(float base, String tipoFactor, float tasaOCuota, float importe) {
-        super(base, tipoFactor, tasaOCuota, importe);
+public class CreadorConceptoIndividual {
+    public Concepto crearConcepto(int cantidad, float importe, float valorUnitario){
+        return new ConceptoIndividual(cantidad, importe, valorUnitario);
     }
 }

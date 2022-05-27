@@ -4,7 +4,7 @@
  */
 package Comprobante;
 
-import Concepto.Conceptos;
+import Comprobante.Concepto.Conceptos;
 
 /**
  *

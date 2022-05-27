@@ -4,9 +4,17 @@
  */
 package Client;
 
-import Empresa.*;
-import ImpuestoTrasladado.*;
-import Concepto.*;
+import Comprobante.Empresa.CreadorEmisor;
+import Comprobante.Empresa.CreadorReceptor;
+import Comprobante.Empresa.Empresa;
+import Comprobante.Empresa.CreadorEmpresa;
+import Comprobante.Concepto.Conceptos;
+import Comprobante.Concepto.Concepto;
+import Comprobante.Concepto.CreadorConceptoIndividual;
+import Comprobante.Concepto.ImpuestoTrasladado.CreadorImpuestoTrasladado;
+import Comprobante.Concepto.ImpuestoTrasladado.CreadorIEPS;
+import Comprobante.Concepto.ImpuestoTrasladado.ImpuestoTrasladado;
+import Comprobante.Concepto.ImpuestoTrasladado.CreadorIVA;
 
 /**
  *

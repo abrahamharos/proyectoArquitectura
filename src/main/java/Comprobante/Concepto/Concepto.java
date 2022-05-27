@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Concepto;
-import ImpuestoTrasladado.*;
+package Comprobante.Concepto;
+import Comprobante.Concepto.ImpuestoTrasladado.ImpuestoTrasladado;
 import java.util.ArrayList;
 
 /**

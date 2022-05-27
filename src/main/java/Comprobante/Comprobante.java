@@ -22,10 +22,6 @@ public class Comprobante implements BuilderComprobante {
     
     public Comprobante(){}
     
-    public float calcularTotal() {
-        return 0f;
-    }
-    
     @Override
     public void addFormaDePago(String formaDePago) {
         this.formaDePago = formaDePago;

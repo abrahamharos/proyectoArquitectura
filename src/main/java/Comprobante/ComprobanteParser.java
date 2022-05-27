@@ -27,6 +27,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 
 import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.DOMException;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -100,7 +101,12 @@ public class ComprobanteParser {
     
     private Receptor crearReceptor(NamedNodeMap atributosReceptor) {
         String rfc = atributosReceptor.getNamedItem("Rfc").getNodeValue();
-        String nombre = atributosReceptor.getNamedItem("Nombre").getNodeValue();
+        String nombre  = "";
+        try {
+            nombre = atributosReceptor.getNamedItem("Nombre").getNodeValue();
+        } catch (Exception e) {
+            nombre  = "Publico en General";
+        }
         String usoCFDI = atributosReceptor.getNamedItem("UsoCFDI").getNodeValue();
         
         return (Receptor) this.creadorReceptor.crearEmpresa(rfc, nombre, null, usoCFDI);
@@ -144,7 +150,7 @@ public class ComprobanteParser {
     }
     
     private ConceptoIndividual crearConceptoIndividual(Node concepto) {
-        int cantidad = Integer.parseInt(concepto.getAttributes().getNamedItem("Cantidad").getNodeValue());
+        int cantidad = (int) Math.round(Float.parseFloat(concepto.getAttributes().getNamedItem("Cantidad").getNodeValue()));
         float importe = Float.parseFloat(concepto.getAttributes().getNamedItem("Importe").getNodeValue());
         float valorUnitario = Float.parseFloat(concepto.getAttributes().getNamedItem("ValorUnitario").getNodeValue());
         ConceptoIndividual conceptoIndividual = (ConceptoIndividual) this.creadorConceptoIndividual.crearConcepto(cantidad, importe, valorUnitario);
@@ -187,9 +193,6 @@ public class ComprobanteParser {
             NodeList conceptos = comprobanteNodeMap.get("cfdi:Conceptos").getChildNodes();
             Conceptos conceptosComprobantes = this.getConceptos(conceptos);
             comprobanteActual.addConceptos(conceptosComprobantes);
-            
-            System.out.println(comprobanteActual.getConceptos().calcularSubtotal());
-            System.out.println(comprobanteActual.getConceptos().calcularTotal());
             
             result.add(comprobanteActual);
         }

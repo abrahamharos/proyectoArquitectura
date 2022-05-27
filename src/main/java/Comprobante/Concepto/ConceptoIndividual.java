@@ -17,17 +17,14 @@ public class ConceptoIndividual extends Concepto {
         super(cantidad, importe, valorUnitario);
     }
     
-    // TODO: Calcular subtotal
     public float calcularSubtotal() {
-        return this.importe;
+        return this.cantidad * this.valorUnitario;
     }
     
-    // TODO: Calcular total
     public float calcularTotal() {
-        return this.cantidad * this.valorUnitario + this.calcularImpuestosTrasladados();
+        return this.calcularSubtotal() + this.calcularImpuestosTrasladados();
     }
     
-    // TODO: Calcular Impuestos Trasladados
     public float calcularImpuestosTrasladados() {
         return this.calcularIVA() + this.calcularIEPS();
     }

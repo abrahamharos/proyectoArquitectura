@@ -5,6 +5,8 @@
 package Comprobante;
 
 import Comprobante.Concepto.Conceptos;
+import Comprobante.Empresa.Emisor;
+import Comprobante.Empresa.Receptor;
 
 /**
  *
@@ -14,6 +16,7 @@ public interface BuilderComprobante {
     public void addFormaDePago(String formaDePago);
     public void addSubtotal(float subtotal);
     public void addFecha(String fecha);
-    public void addTotalImpuestosTrasladados(float totalImpuestosTrasladados);
     public void addConceptos(Conceptos conceptos);
+    public void addEmisor(Emisor emisor);
+    public void addReceptor(Receptor receptor);
 }

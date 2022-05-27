@@ -4,6 +4,8 @@
  */
 package Client;
 
+import Comprobante.Comprobante;
+import Comprobante.ComprobanteParser;
 import Comprobante.Empresa.CreadorEmisor;
 import Comprobante.Empresa.CreadorReceptor;
 import Comprobante.Empresa.Empresa;
@@ -15,6 +17,7 @@ import Comprobante.Concepto.ImpuestoTrasladado.CreadorImpuestoTrasladado;
 import Comprobante.Concepto.ImpuestoTrasladado.CreadorIEPS;
 import Comprobante.Concepto.ImpuestoTrasladado.ImpuestoTrasladado;
 import Comprobante.Concepto.ImpuestoTrasladado.CreadorIVA;
+import java.util.ArrayList;
 
 /**
  *
@@ -63,7 +66,18 @@ public class Main {
         Conceptos conceptos = new Conceptos();
         conceptos.addConcepto(conceptoIndividual);
         System.out.println(conceptos.toString());
-        System.out.println();
+        System.out.println("\n\n\n\n");
+        
+        /* Testing parser */
+        String facturaTest = "/Users/abrahamharos/Documents/proyectoArquitectura/testFacturas/Emitidas/03d4389c-9ab5-4f21-8052-9546f4f720d9.xml";
+        String facturaTest2 = "/Users/abrahamharos/Documents/proyectoArquitectura/testFacturas/Emitidas/8b556856-d44a-4944-b05e-df2d2fd11eb4.xml";
+
+        ArrayList<String> facturasTest = new ArrayList<String>();
+        facturasTest.add(facturaTest);
+        ArrayList<Comprobante> comprobantesResult = new ArrayList<Comprobante>();
+        
+        ComprobanteParser comprobanteParser = new ComprobanteParser();
+        comprobanteParser.parseComprobante(facturasTest);
         
         
         System.out.println("Main finished");

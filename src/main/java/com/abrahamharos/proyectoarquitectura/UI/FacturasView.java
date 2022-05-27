@@ -257,7 +257,7 @@ public class FacturasView extends javax.swing.JFrame {
             if (file.canRead() && file.isFile()) {
                 try {
                     String contents = Files.readString(file.toPath());
-                    System.out.println(contents);
+                    System.out.println(file.getAbsolutePath());
                 } catch (IOException ex) {
                     Logger.getLogger(FacturasView.class.getName()).log(Level.SEVERE, null, ex);
                 }

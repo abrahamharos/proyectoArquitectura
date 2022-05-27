@@ -5,6 +5,8 @@
 package Comprobante;
 
 import Comprobante.Concepto.Conceptos;
+import Comprobante.Empresa.Emisor;
+import Comprobante.Empresa.Receptor;
 
 /**
  *
@@ -12,10 +14,11 @@ import Comprobante.Concepto.Conceptos;
  */
 public class Comprobante implements BuilderComprobante {
     private String formaDePago;
-    private String Fecha;
+    private String fecha;
     private float subtotal;
-    private float totalImpuestosTrasladados;
     private Conceptos conceptos;
+    private Emisor emisor;
+    private Receptor receptor;
     
     public Comprobante(){}
     
@@ -36,12 +39,7 @@ public class Comprobante implements BuilderComprobante {
 
     @Override
     public void addFecha(String fecha) {
-        this.Fecha = fecha;
-    }
-
-    @Override
-    public void addTotalImpuestosTrasladados(float totalImpuestosTrasladados) {
-        this.totalImpuestosTrasladados = totalImpuestosTrasladados;
+        this.fecha = fecha;
     }
     
     @Override
@@ -54,18 +52,34 @@ public class Comprobante implements BuilderComprobante {
     }
 
     public String getFecha() {
-        return Fecha;
+        return fecha;
     }
 
     public float getSubtotal() {
         return subtotal;
     }
 
-    public float getTotalImpuestosTrasladados() {
-        return totalImpuestosTrasladados;
-    }
-
     public Conceptos getConceptos() {
         return conceptos;
     }
+
+    @Override
+    public String toString() {
+        return 
+                "formaDePago: " + this.formaDePago + 
+                "\nFecha: " + this.fecha +
+                "\nSubtotal: " + this.subtotal;
+    }
+
+    @Override
+    public void addEmisor(Emisor emisor) {
+        this.emisor = emisor;
+    }
+
+    @Override
+    public void addReceptor(Receptor receptor) {
+        this.receptor = receptor;
+    }
+    
+    
 }

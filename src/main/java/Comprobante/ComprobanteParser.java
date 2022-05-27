@@ -17,7 +17,6 @@ import Comprobante.Empresa.CreadorReceptor;
 import Comprobante.Empresa.Emisor;
 import Comprobante.Empresa.Receptor;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -153,7 +152,6 @@ public class ComprobanteParser {
         // Se agrega cada impuesto trasladado
         NodeList impuestosTrasladadosNodes = concepto.getChildNodes().item(0).getChildNodes().item(0).getChildNodes();
         this.agregarImpuestosTrasladados(impuestosTrasladadosNodes, conceptoIndividual);
-        
         return conceptoIndividual;
     }
     
@@ -185,10 +183,13 @@ public class ComprobanteParser {
             Receptor receptorActual = this.crearReceptor(atributosReceptor);
             comprobanteActual.addReceptor(receptorActual);
             
-            // Conceptos
+            // Se agregan los conceptos al comprobante.
             NodeList conceptos = comprobanteNodeMap.get("cfdi:Conceptos").getChildNodes();
             Conceptos conceptosComprobantes = this.getConceptos(conceptos);
             comprobanteActual.addConceptos(conceptosComprobantes);
+            
+            System.out.println(comprobanteActual.getConceptos().calcularSubtotal());
+            System.out.println(comprobanteActual.getConceptos().calcularTotal());
             
             result.add(comprobanteActual);
         }

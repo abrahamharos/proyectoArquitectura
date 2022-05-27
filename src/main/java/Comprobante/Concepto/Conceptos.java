@@ -11,13 +11,13 @@ import java.util.ArrayList;
  * @author abrahamharos
  */
 public class Conceptos {
-    protected ArrayList<Concepto> listaConceptos;
+    protected ArrayList<ConceptoIndividual> listaConceptos;
 
     public Conceptos() {
         this.listaConceptos = new ArrayList<>();
     }
     
-    public void addConcepto(Concepto concepto) {
+    public void addConcepto(ConceptoIndividual concepto) {
         this.listaConceptos.add(concepto);
     }
 
@@ -26,37 +26,47 @@ public class Conceptos {
         return "Conceptos{" + "listaConceptos=" + listaConceptos + '}';
     }
     
-    // TODO: Calcular subtotal
     public float calcularSubtotal() {
-        return 0f;
+        float result = 0;
+        for(ConceptoIndividual concepto : this.listaConceptos) {
+            result += concepto.calcularSubtotal();
+        }
+        
+        return result;
     }
     
-    // TODO: Calcular total
     public float calcularTotal() {
-        return 0f;
+       return this.calcularSubtotal() + this.calcularImpuestosTrasladados();
     }
     
-    // TODO: Calcular Impuestos Trasladados
     public float calcularImpuestosTrasladados() {
-        return 0f;
+        return this.calcularIEPS() + this.calcularIVA();
     }
 
-    public ArrayList<Concepto> getListaConceptos() {
+    public ArrayList<ConceptoIndividual> getListaConceptos() {
         return listaConceptos;
     }
 
-    public void setListaConceptos(ArrayList<Concepto> listaConceptos) {
+    public void setListaConceptos(ArrayList<ConceptoIndividual> listaConceptos) {
         this.listaConceptos = listaConceptos;
     }
     
-    // TODO: Calcular IVA
     public float calcularIVA() {
-        return 0f;
+        float result = 0;
+        for(ConceptoIndividual concepto : this.listaConceptos) {
+            result += concepto.calcularIVA();
+        }
+        
+        return result;
     }
     
-    // TODO: Calcular IEPS
     public float calcularIEPS() {
-        return 0f;
+        float result = 0;
+        for(ConceptoIndividual concepto : this.listaConceptos) {
+            result += concepto.calcularIEPS();
+        }
+        
+        return result;
     }
     
 }

@@ -12,6 +12,7 @@ import Comprobante.Empresa.Empresa;
 import Comprobante.Empresa.CreadorEmpresa;
 import Comprobante.Concepto.Conceptos;
 import Comprobante.Concepto.Concepto;
+import Comprobante.Concepto.ConceptoIndividual;
 import Comprobante.Concepto.CreadorConceptoIndividual;
 import Comprobante.Concepto.ImpuestoTrasladado.CreadorImpuestoTrasladado;
 import Comprobante.Concepto.ImpuestoTrasladado.CreadorIEPS;
@@ -57,7 +58,7 @@ public class Main {
         
         /* CREANDO CONCEPTO INVIDUAL */
         CreadorConceptoIndividual creadorConceptoIndividual = new CreadorConceptoIndividual();
-        Concepto conceptoIndividual = creadorConceptoIndividual.crearConcepto(1, 1, 1);
+        ConceptoIndividual conceptoIndividual = (ConceptoIndividual) creadorConceptoIndividual.crearConcepto(1, 1, 1);
         
         System.out.println(conceptoIndividual.toString());
         System.out.println();

@@ -22,11 +22,10 @@ public class Comprobante implements BuilderComprobante {
     
     public Comprobante(){}
     
-    // TODO: Calcular total comprobante
-    public float calcularTotalComprobante() {
+    public float calcularTotal() {
         return 0f;
     }
-
+    
     @Override
     public void addFormaDePago(String formaDePago) {
         this.formaDePago = formaDePago;

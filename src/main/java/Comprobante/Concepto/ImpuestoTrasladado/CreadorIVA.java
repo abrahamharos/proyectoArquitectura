@@ -11,7 +11,7 @@ package Comprobante.Concepto.ImpuestoTrasladado;
 public class CreadorIVA implements CreadorImpuestoTrasladado {
 
     @Override
-    public ImpuestoTrasladado crearImpuestoTrasladado(float base, String tipoFactor, float tasaOCuota, float importe) {
+    public IVA crearImpuestoTrasladado(float base, String tipoFactor, float tasaOCuota, float importe) {
         return new IVA(base, tipoFactor, tasaOCuota, importe);
     }   
 }

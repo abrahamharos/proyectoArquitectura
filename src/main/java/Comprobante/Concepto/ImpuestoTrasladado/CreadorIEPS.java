@@ -11,8 +11,8 @@ package Comprobante.Concepto.ImpuestoTrasladado;
 public class CreadorIEPS implements CreadorImpuestoTrasladado {
 
     @Override
-    public ImpuestoTrasladado crearImpuestoTrasladado(float base, String tipoFactor, float tasaOCuota, float importe) {
-         return new IVA(base, tipoFactor, tasaOCuota, importe);
+    public IEPS crearImpuestoTrasladado(float base, String tipoFactor, float tasaOCuota, float importe) {
+         return new IEPS(base, tipoFactor, tasaOCuota, importe);
     }
     
 }

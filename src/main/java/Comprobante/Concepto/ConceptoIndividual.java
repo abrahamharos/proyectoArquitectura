@@ -5,6 +5,8 @@
 package Comprobante.Concepto;
 
 import Comprobante.Concepto.ImpuestoTrasladado.ImpuestoTrasladado;
+import Comprobante.Concepto.ImpuestoTrasladado.IEPS;
+import Comprobante.Concepto.ImpuestoTrasladado.IVA;
 
 /**
  *
@@ -17,26 +19,40 @@ public class ConceptoIndividual extends Concepto {
     
     // TODO: Calcular subtotal
     public float calcularSubtotal() {
-        return 0f;
+        return this.importe;
     }
     
     // TODO: Calcular total
     public float calcularTotal() {
-        return 0f;
+        return this.cantidad * this.valorUnitario + this.calcularImpuestosTrasladados();
     }
     
     // TODO: Calcular Impuestos Trasladados
     public float calcularImpuestosTrasladados() {
-        return 0f;
+        return this.calcularIVA() + this.calcularIEPS();
     }
     
-    // TODO: Calcular IVA
     public float calcularIVA() {
-        return 0f;
+        float result = 0;
+        
+        for (ImpuestoTrasladado impuesto : this.listaImpuestos) {
+            if (impuesto.getClass() == IVA.class) {
+                result += impuesto.getImporte();
+            }
+        }
+        
+        return result;
     }
     
-    // TODO: Calcular IEPS
     public float calcularIEPS() {
-        return 0f;
+        float result = 0;
+        
+        for (ImpuestoTrasladado impuesto : this.listaImpuestos) {
+            if (impuesto.getClass() == IEPS.class) {
+                result += impuesto.getImporte();
+            }
+        }
+        
+        return result;
     }
 }

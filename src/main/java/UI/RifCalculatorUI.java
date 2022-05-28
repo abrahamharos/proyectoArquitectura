@@ -19,13 +19,4 @@ public class RifCalculatorUI {
         FacturasView ingresosView = new FacturasView();
         ingresosView.setVisible(true);
     }
-    
-    public void egresosView() {
-        FacturasView ingresosView = new FacturasView();
-        ingresosView.setVisible(true);
-    }
-    
-    private void resumenView() {
-        
-    }
 }

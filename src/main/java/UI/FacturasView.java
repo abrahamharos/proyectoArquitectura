@@ -103,26 +103,17 @@ public class FacturasView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaFacturas.setColumnSelectionAllowed(true);
+        tablaFacturas.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaFacturas);
+        tablaFacturas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         if (tablaFacturas.getColumnModel().getColumnCount() > 0) {
-            tablaFacturas.getColumnModel().getColumn(0).setMaxWidth(40);
-            tablaFacturas.getColumnModel().getColumn(1).setMinWidth(120);
-            tablaFacturas.getColumnModel().getColumn(1).setMaxWidth(120);
-            tablaFacturas.getColumnModel().getColumn(2).setMinWidth(250);
-            tablaFacturas.getColumnModel().getColumn(2).setPreferredWidth(10);
-            tablaFacturas.getColumnModel().getColumn(2).setMaxWidth(250);
-            tablaFacturas.getColumnModel().getColumn(3).setMinWidth(150);
-            tablaFacturas.getColumnModel().getColumn(3).setPreferredWidth(75);
-            tablaFacturas.getColumnModel().getColumn(3).setMaxWidth(150);
-            tablaFacturas.getColumnModel().getColumn(4).setMinWidth(150);
-            tablaFacturas.getColumnModel().getColumn(4).setPreferredWidth(10);
-            tablaFacturas.getColumnModel().getColumn(4).setMaxWidth(150);
-            tablaFacturas.getColumnModel().getColumn(5).setMinWidth(90);
-            tablaFacturas.getColumnModel().getColumn(5).setPreferredWidth(10);
-            tablaFacturas.getColumnModel().getColumn(5).setMaxWidth(90);
-            tablaFacturas.getColumnModel().getColumn(6).setResizable(false);
-            tablaFacturas.getColumnModel().getColumn(7).setResizable(false);
-            tablaFacturas.getColumnModel().getColumn(8).setResizable(false);
+            tablaFacturas.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tablaFacturas.getColumnModel().getColumn(1).setPreferredWidth(120);
+            tablaFacturas.getColumnModel().getColumn(2).setPreferredWidth(350);
+            tablaFacturas.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tablaFacturas.getColumnModel().getColumn(4).setPreferredWidth(150);
+            tablaFacturas.getColumnModel().getColumn(5).setPreferredWidth(90);
         }
 
         resumenLabel.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N

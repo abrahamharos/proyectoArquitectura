@@ -173,9 +173,8 @@
             <Component class="javax.swing.JTable" name="tablaFacturas">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="10" rowCount="2">
+                  <Table columnCount="9" rowCount="0">
                     <Column editable="false" title="#" type="java.lang.Integer"/>
-                    <Column editable="false" title="&#xbf;Incluir?" type="java.lang.Object"/>
                     <Column editable="false" title="Fecha" type="java.lang.String"/>
                     <Column editable="false" title="Nombre Emisor" type="java.lang.String"/>
                     <Column editable="false" title="Uso CFDI" type="java.lang.String"/>
@@ -189,11 +188,6 @@
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="40" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="60" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>

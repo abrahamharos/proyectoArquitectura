@@ -18,6 +18,7 @@ import Comprobante.Concepto.ImpuestoTrasladado.CreadorImpuestoTrasladado;
 import Comprobante.Concepto.ImpuestoTrasladado.CreadorIEPS;
 import Comprobante.Concepto.ImpuestoTrasladado.ImpuestoTrasladado;
 import Comprobante.Concepto.ImpuestoTrasladado.CreadorIVA;
+import UI.RifCalculatorUI;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -43,6 +44,7 @@ public class Main {
 //        comprobanteParser.parseComprobante(facturasTest);
 
         
-        System.out.println("Main finished");
+        RifCalculatorUI UI = new RifCalculatorUI();
+        UI.run();
     }
 }

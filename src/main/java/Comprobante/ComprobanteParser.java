@@ -170,7 +170,7 @@ public class ComprobanteParser {
         return result;
     }
     
-    public ArrayList<Comprobante> parseComprobante(ArrayList<String> comprobanteFilePaths) {
+    public ArrayList<Comprobante> parseComprobantes(ArrayList<String> comprobanteFilePaths) {
         ArrayList<Comprobante> result = new ArrayList<>();
         for (String comprobanteFilePath : comprobanteFilePaths) {
             HashMap<String, Node> comprobanteNodeMap = getNodeMap(comprobanteFilePath);

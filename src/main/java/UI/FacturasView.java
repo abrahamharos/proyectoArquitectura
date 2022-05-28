@@ -4,24 +4,33 @@
  */
 package UI;
 
+import Comprobante.Comprobante;
+import Comprobante.ComprobanteParser;
 import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author abrahamharos
  */
 public class FacturasView extends javax.swing.JFrame {
-
+    private String viewName;
+    private ArrayList<Comprobante> listaComprobantes;
+    
     /**
      * Creates new form FacturasView
+     * @param viewName name of the view
      */
-    public FacturasView() {
+    public FacturasView(String viewName) {
+        this.viewName = viewName;
         initComponents();
     }
 
@@ -73,18 +82,17 @@ public class FacturasView extends javax.swing.JFrame {
 
         tablaFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "#", "¿Incluir?", "Fecha", "Nombre Emisor", "Uso CFDI", "Método de pago", "Subtotal", "IVA", "IEPS", "Total"
+                "#", "Fecha", "Nombre Emisor", "Uso CFDI", "Método de pago", "Subtotal", "IVA", "IEPS", "Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -98,24 +106,23 @@ public class FacturasView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaFacturas);
         if (tablaFacturas.getColumnModel().getColumnCount() > 0) {
             tablaFacturas.getColumnModel().getColumn(0).setMaxWidth(40);
-            tablaFacturas.getColumnModel().getColumn(1).setMaxWidth(60);
-            tablaFacturas.getColumnModel().getColumn(2).setMinWidth(120);
-            tablaFacturas.getColumnModel().getColumn(2).setMaxWidth(120);
-            tablaFacturas.getColumnModel().getColumn(3).setMinWidth(250);
-            tablaFacturas.getColumnModel().getColumn(3).setPreferredWidth(10);
-            tablaFacturas.getColumnModel().getColumn(3).setMaxWidth(250);
+            tablaFacturas.getColumnModel().getColumn(1).setMinWidth(120);
+            tablaFacturas.getColumnModel().getColumn(1).setMaxWidth(120);
+            tablaFacturas.getColumnModel().getColumn(2).setMinWidth(250);
+            tablaFacturas.getColumnModel().getColumn(2).setPreferredWidth(10);
+            tablaFacturas.getColumnModel().getColumn(2).setMaxWidth(250);
+            tablaFacturas.getColumnModel().getColumn(3).setMinWidth(150);
+            tablaFacturas.getColumnModel().getColumn(3).setPreferredWidth(75);
+            tablaFacturas.getColumnModel().getColumn(3).setMaxWidth(150);
             tablaFacturas.getColumnModel().getColumn(4).setMinWidth(150);
-            tablaFacturas.getColumnModel().getColumn(4).setPreferredWidth(75);
+            tablaFacturas.getColumnModel().getColumn(4).setPreferredWidth(10);
             tablaFacturas.getColumnModel().getColumn(4).setMaxWidth(150);
-            tablaFacturas.getColumnModel().getColumn(5).setMinWidth(150);
+            tablaFacturas.getColumnModel().getColumn(5).setMinWidth(90);
             tablaFacturas.getColumnModel().getColumn(5).setPreferredWidth(10);
-            tablaFacturas.getColumnModel().getColumn(5).setMaxWidth(150);
-            tablaFacturas.getColumnModel().getColumn(6).setMinWidth(90);
-            tablaFacturas.getColumnModel().getColumn(6).setPreferredWidth(10);
-            tablaFacturas.getColumnModel().getColumn(6).setMaxWidth(90);
+            tablaFacturas.getColumnModel().getColumn(5).setMaxWidth(90);
+            tablaFacturas.getColumnModel().getColumn(6).setResizable(false);
             tablaFacturas.getColumnModel().getColumn(7).setResizable(false);
             tablaFacturas.getColumnModel().getColumn(8).setResizable(false);
-            tablaFacturas.getColumnModel().getColumn(9).setResizable(false);
         }
 
         resumenLabel.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -249,22 +256,39 @@ public class FacturasView extends javax.swing.JFrame {
     }//GEN-LAST:event_siguienteBtnActionPerformed
 
     private void selectFilesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFilesBtnActionPerformed
+        this.listaComprobantes = this.cargarArchivos();
+        this.fillTable(listaComprobantes);
+    }//GEN-LAST:event_selectFilesBtnActionPerformed
+    
+    private void fillTable(ArrayList<Comprobante> listaComprobantes) {
+        DefaultTableModel model = (DefaultTableModel) this.tablaFacturas.getModel();
+        Object rowData[] = {"#", "Fecha", "Nombre Emisor", "Uso CFDI", "Método de pago", "Subtotal", "IVA", "IEPS", "Total"};
+        model.addRow(rowData);
+    }
+    
+    private ArrayList<Comprobante> cargarArchivos() {
+        ArrayList<String> facturasFiles = new ArrayList<String>();
+        
         JFileChooser chooser = new JFileChooser();
         chooser.setMultiSelectionEnabled(true);
         chooser.showOpenDialog(null);
         File[] files = chooser.getSelectedFiles();
+        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("XML FILES", "xml");
+        chooser.setFileFilter(filter);
+        
         for (File file : files) {
             if (file.canRead() && file.isFile()) {
-                try {
-                    String contents = Files.readString(file.toPath());
-                    System.out.println(file.getAbsolutePath());
-                } catch (IOException ex) {
-                    Logger.getLogger(FacturasView.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                facturasFiles.add(file.getAbsolutePath());
             }
         }
-    }//GEN-LAST:event_selectFilesBtnActionPerformed
-
+        
+        ComprobanteParser comprobanteParser = new ComprobanteParser();
+        ArrayList<Comprobante> comprobantes = comprobanteParser.parseComprobantes(facturasFiles);
+        
+        return comprobantes;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -295,7 +319,7 @@ public class FacturasView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FacturasView().setVisible(true);
+                new FacturasView("Recibidas").setVisible(true);
             }
         });
     }

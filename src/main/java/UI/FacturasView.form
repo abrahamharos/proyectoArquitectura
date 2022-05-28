@@ -90,7 +90,7 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="557" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="458" max="-2" attributes="0"/>
                           <Component id="windowTitle" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -176,7 +176,7 @@
                   <Table columnCount="9" rowCount="0">
                     <Column editable="false" title="#" type="java.lang.Integer"/>
                     <Column editable="false" title="Fecha" type="java.lang.String"/>
-                    <Column editable="false" title="Nombre Emisor" type="java.lang.String"/>
+                    <Column editable="false" title="Nombre" type="java.lang.String"/>
                     <Column editable="false" title="Uso CFDI" type="java.lang.String"/>
                     <Column editable="false" title="M&#xe9;todo de pago" type="java.lang.String"/>
                     <Column editable="false" title="Subtotal" type="java.lang.String"/>

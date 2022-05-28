@@ -37,11 +37,10 @@ public class ComprobantesTableRows {
     }
     
     private String getFormaDePago(Comprobante comprobanteActual) {
-        return this.formasDePago.get(comprobanteActual.getFormaDePago());
-    }
-    
-    public String toPesos(float valor) {
-        return "$" + String.valueOf(valor);
+        if(formasDePago.containsKey(comprobanteActual.getFormaDePago())) {
+            return this.formasDePago.get(comprobanteActual.getFormaDePago());
+        }
+        return comprobanteActual.getFormaDePago();
     }
     
     public void setTableRows(DefaultTableModel model) {
@@ -62,11 +61,11 @@ public class ComprobantesTableRows {
                 comprobanteActual.getFecha(), 
                 nombre,
                 comprobanteActual.getReceptor().getUsoCFDI(), 
-                formaPago, 
-                this.toPesos(subtotal), 
-                this.toPesos(iva),
-                this.toPesos(ieps),
-                this.toPesos(total)
+                formaPago,
+                Utils.toPesos(subtotal), 
+                Utils.toPesos(iva),
+                Utils.toPesos(ieps),
+                Utils.toPesos(total)
             };
             
             model.addRow(rowData);
@@ -84,6 +83,4 @@ public class ComprobantesTableRows {
     public Resumen getResumen() {
         return resumen;
     }
-    
-    
 }

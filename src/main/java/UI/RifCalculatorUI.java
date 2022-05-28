@@ -12,16 +12,17 @@ public class RifCalculatorUI {
     public RifCalculatorUI(){}
     
     public void run() {
-        this.egresosView();
+        this.ingresosView();
     }
     
     private void ingresosView() {
-    
+        FacturasView ingresosView = new FacturasView();
+        ingresosView.setVisible(true);
     }
     
     public void egresosView() {
-        FacturasView egresosView = new FacturasView("Recibidas");
-        egresosView.setVisible(true);
+        FacturasView ingresosView = new FacturasView();
+        ingresosView.setVisible(true);
     }
     
     private void resumenView() {

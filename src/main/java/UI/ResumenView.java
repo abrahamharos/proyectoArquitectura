@@ -4,17 +4,49 @@
  */
 package UI;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author abrahamharos
  */
 public class ResumenView extends javax.swing.JFrame {
-
+    private FacturasView previousView;
+    
     /**
      * Creates new form ResumenView
      */
-    public ResumenView() {
+    public ResumenView(FacturasView previousView) {
+        this.previousView = previousView;
         initComponents();
+        this.fillTable();
+    }
+    
+    private Resumen calculateResult () {
+        Resumen ingresos = this.previousView.getResumenIngresos();
+        Resumen egresos = this.previousView.getResumenEgresos();
+        return new Resumen(
+                ingresos.getSubtotal() - egresos.getSubtotal(),
+                ingresos.getIva()- egresos.getIva(),
+                ingresos.getIeps()- egresos.getIeps(),
+                ingresos.getTotal()- egresos.getTotal()
+        );
+    }
+    
+    private void fillTable() {
+        DefaultTableModel model = (DefaultTableModel) this.tablaResumen.getModel();
+        
+        model.addRow(this.previousView.getResumenIngresos().getRowForResumen("Ingresos"));
+        model.addRow(this.previousView.getResumenEgresos().getRowForResumen("Egresos"));
+        
+        model.addRow(calculateResult().getRowForResumen("Total"));
+        
     }
 
     /**
@@ -59,10 +91,7 @@ public class ResumenView extends javax.swing.JFrame {
 
         tablaResumen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Tipo", "Subtotal", "I.V.A.", "I.E.P.S", "Total"
@@ -124,12 +153,42 @@ public class ResumenView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void export(JTable table, File file){
+        try
+        {
+          TableModel m = table.getModel();
+          FileWriter fw = new FileWriter(file);
+          for(int i = 0; i < m.getColumnCount(); i++){
+            fw.write(m.getColumnName(i) + "\t");
+          }
+          fw.write("\n");
+          for(int i=0; i < m.getRowCount(); i++) {
+            for(int j=0; j < m.getColumnCount(); j++) {
+              fw.write(m.getValueAt(i,j).toString()+"\t");
+            }
+            fw.write("\n");
+          }
+          fw.close();
+        }
+        catch(IOException e){ System.out.println(e); }
+    }
+    
     private void excelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excelBtnActionPerformed
-        // TODO add your handling code here:
+        JFileChooser fchoose = new JFileChooser();
+           int option = fchoose.showSaveDialog(this);
+           if(option == JFileChooser.APPROVE_OPTION){
+             String name = fchoose.getSelectedFile().getName(); 
+             String path = fchoose.getSelectedFile().getParentFile().getPath();
+             String file = path + "/" + name + ".xlsx"; 
+             System.out.println(file);
+             export(this.tablaResumen, new File(file));
+           }
     }//GEN-LAST:event_excelBtnActionPerformed
 
     private void atrasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBtnActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        this.previousView.setVisible(true);
     }//GEN-LAST:event_atrasBtnActionPerformed
 
     /**
@@ -162,7 +221,7 @@ public class ResumenView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ResumenView().setVisible(true);
+                new ResumenView(null).setVisible(true);
             }
         });
     }

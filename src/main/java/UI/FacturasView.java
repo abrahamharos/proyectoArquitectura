@@ -22,16 +22,40 @@ import javax.swing.table.DefaultTableModel;
  * @author abrahamharos
  */
 public class FacturasView extends javax.swing.JFrame {
-    private String viewName;
     private ArrayList<Comprobante> listaComprobantes;
+    private Resumen resumenIngresos;
+    private Resumen resumenEgresos;
+    private boolean isIngresos;
+    private FacturasView previousView;
     
     /**
      * Creates new form FacturasView
      * @param viewName name of the view
      */
-    public FacturasView(String viewName) {
-        this.viewName = viewName;
+    public FacturasView() {
+        this.isIngresos = true;
         initComponents();
+        
+        this.setViewName();
+    }
+    
+    public FacturasView(FacturasView previousView) {
+        this.isIngresos = false;
+        this.previousView = previousView;
+        this.resumenIngresos = this.previousView.getResumenIngresos();
+        initComponents();
+        
+        this.setViewName();
+    }
+    
+    private void setViewName(){
+        if(this.isIngresos) {
+            this.windowTitle.setText("Seleccione los comprobantes de Ingreso");
+            this.atrasBtn.setEnabled(false);
+        } else {
+            this.windowTitle.setText("Seleccione los comprobantes de Egresos");
+        }
+        
     }
 
     /**
@@ -85,7 +109,7 @@ public class FacturasView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "#", "Fecha", "Nombre Emisor", "Uso CFDI", "Método de pago", "Subtotal", "IVA", "IEPS", "Total"
+                "#", "Fecha", "Nombre", "Uso CFDI", "Método de pago", "Subtotal", "IVA", "IEPS", "Total"
             }
         ) {
             Class[] types = new Class [] {
@@ -183,7 +207,7 @@ public class FacturasView extends javax.swing.JFrame {
                                     .addComponent(siguienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1208, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(557, 557, 557)
+                        .addGap(458, 458, 458)
                         .addComponent(windowTitle)))
                 .addGap(0, 36, Short.MAX_VALUE))
         );
@@ -239,11 +263,21 @@ public class FacturasView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atrasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBtnActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        this.previousView.setVisible(true);
     }//GEN-LAST:event_atrasBtnActionPerformed
 
     private void siguienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteBtnActionPerformed
-        // TODO add your handling code here:
+        if (isIngresos) {
+            FacturasView egresosView = new FacturasView(this);
+            egresosView.setVisible(true);
+            this.setVisible(false);
+        } else {
+            this.setVisible(false);
+            ResumenView resumenView = new ResumenView(this);
+            resumenView.setVisible(true);
+        }
+        
     }//GEN-LAST:event_siguienteBtnActionPerformed
 
     private void selectFilesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectFilesBtnActionPerformed
@@ -254,15 +288,22 @@ public class FacturasView extends javax.swing.JFrame {
     private void fillResumen(ComprobantesTableRows comprobantesTableRows) {
         Resumen resumen = comprobantesTableRows.getResumen();
         
-        this.subtotal.setText(comprobantesTableRows.toPesos(resumen.getSubtotal()));
-        this.iva.setText(comprobantesTableRows.toPesos(resumen.getIva()));
-        this.ieps.setText(comprobantesTableRows.toPesos(resumen.getIeps()));
-        this.total.setText(comprobantesTableRows.toPesos(resumen.getTotal()));
+        this.subtotal.setText(Utils.toPesos(resumen.getSubtotal()));
+        this.iva.setText(Utils.toPesos(resumen.getIva()));
+        this.ieps.setText(Utils.toPesos(resumen.getIeps()));
+        this.total.setText(Utils.toPesos(resumen.getTotal()));
+        
+        if (this.isIngresos) {
+            this.resumenIngresos = resumen;
+        } else {
+            this.resumenEgresos = resumen;
+        }
+        
     }
     
     private void fillTable(ArrayList<Comprobante> listaComprobantes) {
         DefaultTableModel model = (DefaultTableModel) this.tablaFacturas.getModel();
-        ComprobantesTableRows comprobantesTableRows = new ComprobantesTableRows(listaComprobantes, true);
+        ComprobantesTableRows comprobantesTableRows = new ComprobantesTableRows(listaComprobantes, this.isIngresos);
         comprobantesTableRows.setTableRows(model);
         
         this.fillResumen(comprobantesTableRows);
@@ -289,6 +330,14 @@ public class FacturasView extends javax.swing.JFrame {
         ArrayList<Comprobante> comprobantes = comprobanteParser.parseComprobantes(facturasFiles);
         
         return comprobantes;
+    }
+
+    public Resumen getResumenIngresos() {
+        return resumenIngresos;
+    }
+
+    public Resumen getResumenEgresos() {
+        return resumenEgresos;
     }
     
     /**
@@ -321,7 +370,7 @@ public class FacturasView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FacturasView("Recibidas").setVisible(true);
+                new FacturasView().setVisible(true);
             }
         });
     }

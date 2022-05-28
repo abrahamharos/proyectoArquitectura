@@ -47,4 +47,21 @@ public class Resumen {
     public float getTotal() {
         return total;
     }
+
+    @Override
+    public String toString() {
+        return "Resumen{" + "subtotal=" + subtotal + ", iva=" + iva + ", ieps=" + ieps + ", total=" + total + '}';
+    }
+    
+    public Object[] getRowForResumen(String tipo) {
+        Object rowData[] = {
+                tipo,
+                Utils.toPesos(subtotal), 
+                Utils.toPesos(iva),
+                Utils.toPesos(ieps),
+                Utils.toPesos(total)
+            };
+        return rowData;
+    }
+    
 }

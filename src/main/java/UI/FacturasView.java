@@ -260,10 +260,21 @@ public class FacturasView extends javax.swing.JFrame {
         this.fillTable(listaComprobantes);
     }//GEN-LAST:event_selectFilesBtnActionPerformed
     
+    private void fillResumen(ComprobantesTableRows comprobantesTableRows) {
+        Resumen resumen = comprobantesTableRows.getResumen();
+        
+        this.subtotal.setText(comprobantesTableRows.toPesos(resumen.getSubtotal()));
+        this.iva.setText(comprobantesTableRows.toPesos(resumen.getIva()));
+        this.ieps.setText(comprobantesTableRows.toPesos(resumen.getIeps()));
+        this.total.setText(comprobantesTableRows.toPesos(resumen.getTotal()));
+    }
+    
     private void fillTable(ArrayList<Comprobante> listaComprobantes) {
         DefaultTableModel model = (DefaultTableModel) this.tablaFacturas.getModel();
-        Object rowData[] = {"#", "Fecha", "Nombre Emisor", "Uso CFDI", "Método de pago", "Subtotal", "IVA", "IEPS", "Total"};
-        model.addRow(rowData);
+        ComprobantesTableRows comprobantesTableRows = new ComprobantesTableRows(listaComprobantes, true);
+        comprobantesTableRows.setTableRows(model);
+        
+        this.fillResumen(comprobantesTableRows);
     }
     
     private ArrayList<Comprobante> cargarArchivos() {

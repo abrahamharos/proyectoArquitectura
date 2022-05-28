@@ -75,6 +75,12 @@ public class Comprobante implements BuilderComprobante {
     public void addReceptor(Receptor receptor) {
         this.receptor = receptor;
     }
-    
-    
+
+    public Emisor getEmisor() {
+        return emisor;
+    }
+
+    public Receptor getReceptor() {
+        return receptor;
+    }
 }

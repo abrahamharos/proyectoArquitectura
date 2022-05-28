@@ -180,7 +180,7 @@ public class ResumenView extends javax.swing.JFrame {
            if(option == JFileChooser.APPROVE_OPTION){
              String name = fchoose.getSelectedFile().getName(); 
              String path = fchoose.getSelectedFile().getParentFile().getPath();
-             String file = path + "/" + name + ".xlsx"; 
+             String file = path + "/" + name + ".xls"; 
              System.out.println(file);
              export(this.tablaResumen, new File(file));
            }
